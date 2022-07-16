@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "styles.css" %}" type="text/css" />
+
+    <title>SkyInfo</title>
+</head>
+<body>
+    <div class="body">
+        <div class="container">
+            
+            <div class="title">
+                <img src="{% static "cloud.png" %}" alt="error">
+                <h1>SkyInfo</h1>
+            </div>
+
+            <div class="form">
+                <form method="POST">
+                    {% csrf_token %}
+                <input type="text" name="city" placeholder="{{placeholder}}">
+                <button type="submit" class="btn">Enter</button>
+                </form>
+            </div>
+
+            <div class="weather">
+                <div class="info">
+                    <div>Temperature : {{temperature}} &deg</div>
+        
+                    <div>Humidity : {{humidity}} %</div>
+                    <div>Pressure : {{pressure}} Pa</div>
+                    <div>Country Code : {{country}}</div>
+                </div>
+
+                <div class="image">
+                    <img src="http://openweathermap.org/img/w/{{icon}}.png" alt="error">
+                    <div>   {{description}}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
