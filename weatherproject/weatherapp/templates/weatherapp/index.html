@@ -8,6 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static "styles.css" %}" type="text/css" />
 
+<style type="text/css">
+    .center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+</style>
+
     <title>SkyInfo</title>
 </head>
 <body>
@@ -18,6 +28,20 @@
                 <img src="{% static "cloud.png" %}" alt="error">
                 <h1>SkyInfo</h1>
             </div>
+
+
+<!-- added messages here to show ----------------------------------------------------->
+                {% if messages %}
+                <div class="center">
+                        <ul class="messages" style="font-size: 25px; color: red;">
+                            {% for message in messages %}
+                            {{ message }}
+                            {% endfor %}
+                        </ul>
+                </div>
+                {% endif %}
+
+<!-------------------------------------------------------------------->
 
             <div class="form">
                 <form method="POST">

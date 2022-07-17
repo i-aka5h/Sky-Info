@@ -29,11 +29,21 @@ def index(request):
     day=datetime.date.today()
     res = requests.get(url,parameters).json()
     
-    temperature=res['main']['temp']
-    icon=res['weather'][0]['icon']
-    description=res['weather'][0]['main']
-    pressure=res['main']['pressure']
-    country=res['sys']['country']
-    humidity=res['main']['humidity']
+    if(res['cod']==200):
+        temperature=res['main']['temp']
+        icon=res['weather'][0]['icon']
+        description=res['weather'][0]['main']
+        pressure=res['main']['pressure']
+        country=res['sys']['country']
+        humidity=res['main']['humidity']
     
-    return render(request,'weatherapp/index.html',{'description':description,'icon':icon,'temperature':temperature, 'day':day, 'country':country,'pressure':pressure,'humidity':humidity ,'city':city, 'placeholder':placeholder})
+    
+        return render(request,'weatherapp/index.html',{'description':description,'icon':icon,'temperature':temperature, 'day':day, 'country':country,'pressure':pressure,'humidity':humidity ,'city':city, 'placeholder':placeholder})
+
+
+    elif(res['cod']=='404'):
+        messages.info(request, res['message'])
+        return render(request,'weatherapp/index.html')
+    else:
+        messages.info(request,'Please Enter a city name!')
+        return render(request,'weatherapp/index.html')
