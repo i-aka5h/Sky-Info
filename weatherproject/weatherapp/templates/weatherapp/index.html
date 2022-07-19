@@ -6,22 +6,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static "styles.css" %}" type="text/css" />
+    <link rel="stylesheet" href="/static/styles.css?{% now "U" %}" type="text/css" />
 
-<style type="text/css">
-    .center {
-  margin: auto;
-  width: 50%;
-  border: 3px solid green;
-  padding: 10px;
-}
-
-</style>
-
-    <title>SkyInfo</title>
+<title>SkyInfo</title>
 </head>
 <body>
-    <div class="body">
+
+        {% if messages %}
+        {% for message in messages%}
+        {% if message.tags == 'info'%}
+        <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>{{message}}</strong>
+        {%endif%}
+        {% endfor %}
+        </div>
+        {% endif %}
+
+
         <div class="container">
             
             <div class="title">
@@ -30,27 +32,17 @@
             </div>
 
 
-
-                {% if messages %}
-                <div class="center">
-                        <ul class="messages" style="font-size: 25px; color: red;">
-                            {% for message in messages %}
-                            {{ message }}
-                            {% endfor %}
-                        </ul>
-                </div>
-                {% endif %}
-
-
-
             <div class="form">
                 <form method="POST">
                     {% csrf_token %}
-                <input type="text" name="city" placeholder="{{placeholder}}">
+                <input type="text" name="city" placeholder="{{placeholder}}" autofocus>
                 <button type="submit" class="btn">Enter</button>
                 </form>
             </div>
+            
+            {% if messages %}
 
+            {% else %}
             <div class="weather">
                 <div class="info">
                     <div>Temperature : {{temperature}} &deg</div>
@@ -65,8 +57,11 @@
                     <div>   {{description}}</div>
                 </div>
             </div>
+            {% endif %}
         </div>
 
     </div>
+
+    
 </body>
 </html>

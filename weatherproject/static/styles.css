@@ -5,15 +5,39 @@
 
 .title img{
     display:inline-block;
-    width: 10rem;
+    width: 9rem;
     height: auto;
 
+}
+
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+  }
+  
+strong{
+    font-size: 1.5rem;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    float: right;
+    font-size: 2rem;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+.closebtn:hover {
+    color: black;
 }
 
 .title{
     display: inline-block;
     align-items: center;
-    width: 32%;
+    width: 30rem;
     font-size: 2rem;
     display: flex;
     margin:auto;
@@ -26,8 +50,11 @@
 }
 
 body{
-    background-image:linear-gradient(skyblue,black);
-    height: 100vh;
+    border: 3px solid yellow;
+    background-image:linear-gradient( skyblue,black);
+    background-repeat:no-repeat;
+    background-size:100%;
+    min-height: 100vh;
 }
 
 .container{

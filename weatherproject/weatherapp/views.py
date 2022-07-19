@@ -1,3 +1,4 @@
+from tkinter import E
 from django.shortcuts import render
 from django.contrib import messages
 import requests
@@ -11,10 +12,11 @@ def index(request):
     
     if 'city' in request.POST :
         city=request.POST['city']
-        placeholder=city;
+        placeholder=city
     else:
-        city='noida'
         placeholder='Enter City'
+        messages.error(request,'kuchh bhi likh sakte hai :) ')
+        return render(request,'weatherapp/index.html')
     
     url= 'https://api.openweathermap.org/data/2.5/weather'
     
@@ -43,7 +45,7 @@ def index(request):
 
 
     elif(res['cod']=='404'):
-        messages.info(request, res['message'])
+        messages.info(request, 'City Not Found !')
         return render(request,'weatherapp/index.html')
     else:
         messages.info(request,'Please Enter a city name!')
