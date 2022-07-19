@@ -16,7 +16,7 @@ def index(request):
     else:
         placeholder='Enter City'
         messages.error(request,'kuchh bhi likh sakte hai :) ')
-        return render(request,'weatherapp/index.html')
+        return render(request,'weatherapp/index.html',{'placeholder':placeholder})
     
     url= 'https://api.openweathermap.org/data/2.5/weather'
     
@@ -46,7 +46,7 @@ def index(request):
 
     elif(res['cod']=='404'):
         messages.info(request, 'City Not Found !')
-        return render(request,'weatherapp/index.html')
+        return render(request,'weatherapp/index.html',{'placeholder':'Enter city'})
     else:
         messages.info(request,'Please Enter a city name!')
-        return render(request,'weatherapp/index.html')
+        return render(request,'weatherapp/index.html',{'placeholder':'Enter city'})
