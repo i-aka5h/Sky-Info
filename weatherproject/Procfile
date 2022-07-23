@@ -1,0 +1,1 @@
+web gunicorn skyinfo.wsgi:application --log-file -
