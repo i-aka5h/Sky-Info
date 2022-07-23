@@ -3,6 +3,9 @@ A web application that displays weather forecast of over 200k cities all over th
 To get your own API key visit 
 https://openweathermap.org/
 
+# Deployed on Heroku
+This website is live on http://skyyinfo.herokuapp.com/
+
 # Working
 Get into the project folder and run the following commands in any terminal
  ```
