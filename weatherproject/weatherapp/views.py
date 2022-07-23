@@ -37,7 +37,10 @@ def index(request):
         icon=res['weather'][0]['icon']
         description=res['weather'][0]['main']
         pressure=res['main']['pressure']
-        country=res['sys']['country']
+        try:
+            country=res['sys']['country']
+        except:
+            country="N/A"
         humidity=res['main']['humidity']
     
     
