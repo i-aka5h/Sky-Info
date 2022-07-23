@@ -121,9 +121,9 @@ button:hover{
     display: inline-block;
     /* margin: auto; */
     /* border: 2px solid white; */
-    width: 40%;
+    width: 45%;
     height: 80%;
-    padding: 0.7rem;
+    padding: 0.7rem 0 0.7rem 0.7rem;
 }
 
 .info div{
@@ -156,26 +156,26 @@ button:hover{
 }
 
 
-@media(max-width:800px) {
+@media(max-width:600px) {
     html{
         font-size: 80%;
     }
 }
 
-@media(max-width:500px){
+@media(max-width:450px){
     html{
-        font-size: 65%;
+        font-size: 68%;
     }
 }
 
-@media(max-width:400px){
+@media(max-width:380px){
     html{
-        font-size: 55%;
+        font-size: 56%;
     }
 }
 
 @media(max-width:320px){
     html{
-        font-size: 45%;
+        font-size: 50%;
     }
 }

@@ -1,4 +1,4 @@
-from tkinter import E
+# from tkinter import E
 from django.shortcuts import render
 from django.contrib import messages
 import requests
@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 import os
 
 # Create your views here.
-
 def index(request):
     
     if 'city' in request.POST :
