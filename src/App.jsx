@@ -1,6 +1,6 @@
 import Forcast from "./Components/Forcast";
 
-const App = () => {
+const App = () => {     
   return (
     <div className="app">
       <Forcast />
