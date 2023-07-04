@@ -3,6 +3,8 @@ A website that displays weather forecast of over 200,000 cities using OpenWeathe
 
 Allows user to enter any city from all over the globe and it displays the current weather forecast along with other important informations like wind speed, humidity etc. It works with states and provinces as well.
 
+This website is live : https://skyinfo.netlify.app/
+
 ![image](https://github.com/i-aka5h/Sky-Info/assets/105808186/4df98a8a-6bdb-4997-88f4-4a4f50794bd8)
 
 ### To Install Project Dependencies, run
