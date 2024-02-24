@@ -9,7 +9,7 @@ const Forcast = () => {
     const [data, setData] = useState({});
 
     const searchcity = (city) => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city != "[object object]" ? city : location}&units=imperial&appid=${api}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city != "[object object]" ? city : location}&units=metric&appid=${api}`)
             .then(res => res.json())
             .then(data => {
                 setData(data);
@@ -76,7 +76,7 @@ const Forcast = () => {
                                 <li>
                                     Temperature
                                     <span className="temp">
-                                        {Math.round(data.main.temp)}°F ({data.weather[0].main})
+                                        {Math.round(data.main.temp)}°C ({data.weather[0].main})
                                     </span>
                                 </li>
                                 <li>
@@ -94,13 +94,13 @@ const Forcast = () => {
                                 <li>
                                     Wind Speed
                                     <span className="temp">
-                                        {Math.round(data.wind.speed)} MPH
+                                        {Math.round(data.wind.speed)} mps
                                     </span>
                                 </li>
                                 <li>
                                     Feels Like
                                     <span className="temp">
-                                        {data.main.feels_like.toFixed()}°F
+                                        {data.main.feels_like.toFixed()}°C
                                     </span>
                                 </li>
                             </ul>
