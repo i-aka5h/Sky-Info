@@ -8,13 +8,19 @@ const Forcast = () => {
     const [location, setLocation] = useState('');
     const [data, setData] = useState({});
 
-    const searchcity = (city) => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city != "[object object]" ? city : location}&units=metric&appid=${api}`)
-            .then(res => res.json())
-            .then(data => {
-                setData(data);
-                setLocation("");
-            });
+    const searchcity = async (city) => {
+        try {
+            const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city !== "[object object]" ? city : location}&units=metric&appid=${api}`);
+            const data = await res.json();
+            setData(data);
+            setLocation("");
+            console.log("Fine everything")
+        }
+
+        catch {
+            setData({"code" : "-1"})
+            console.log("Unknow Error occured");
+        }
     }
 
     const searchLocation = (e) => {
@@ -63,7 +69,7 @@ const Forcast = () => {
                 </div>
 
                 {
-                    data.main ? (
+                    data.cod < 400 ? (
                         <div >
                             {" "}
                             <div className='city--heading'>
@@ -105,8 +111,15 @@ const Forcast = () => {
                                 </li>
                             </ul>
                         </div>
-                    ) : (typeof data.main === "undefined") ? (
+                    ) 
+                    : (data.cod == 404) ? (
                         <p className='city--heading'>City not found!</p>
+                    ) 
+                    : (data.cod == 401) ? (
+                        <p className='city--heading'>Invalid API Key </p>
+                    )
+                    : (data.code == -1) ? (
+                        <p className='city--heading'>API down</p>
                     ) : null
                 }
 
